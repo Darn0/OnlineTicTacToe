@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
     Button buRegister; // UI Register button
     Button buLogout; // UI Logout button
 
+
+
     // Firebase Analytics
     private FirebaseAnalytics mFirebaseAnalytics;
     //Firebase Auth
@@ -118,7 +120,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+        mAuth.addAuthStateListener(mAuthListener);// on start add auth state listener
+        buAccept.setEnabled(false); // disable the accept button as there is no need for it to be enabled without an incoming request
+        buAccept.setBackgroundColor(Color.GRAY); // set the button to grey so it is visually not enabled to the user
     }
 
     @Override
@@ -171,11 +175,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void buInvite(View view) { // handles the button click for Invite
         Log.d("Invite", InvitePlayerEmail.getText().toString()); // log the output when the Invite button is pressed
-        //send request to a user via the invitePlayerEmail input and MyEmail so the other user knows who the request is from, push will assign a random ID to the request
-        myRef.child("Users").child(BeforeAt(InvitePlayerEmail.getText().toString())).child("Requests").push().setValue(MyEmail);
-        StartGame(BeforeAt(InvitePlayerEmail.getText().toString()) + ":" + BeforeAt(MyEmail));
-        MySample="X";//when invite set player as X
-
+        if (InvitePlayerEmail.length() != 0) {// check the email is not 0
+            //send request to a user via the invitePlayerEmail input and MyEmail so the other user knows who the request is from, push will assign a random ID to the request
+            myRef.child("Users").child(BeforeAt(InvitePlayerEmail.getText().toString())).child("Requests").push().setValue(MyEmail);
+            StartGame(BeforeAt(InvitePlayerEmail.getText().toString()) + ":" + BeforeAt(MyEmail));
+            MySample = "X";//when invite set player as X
+        } else {
+            Toast.makeText(this, "Please enter an Invite email address", Toast.LENGTH_LONG).show();
+        }
     }
 
     void IncomingRequest() {
@@ -191,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
                         for(String key:td.keySet()){ // for each string key in the key set (i.e. get all the requests to the local user)
                             value =(String)td.get(key);// get and assign the values and convert to string
                             Log.d("User Request",value);// log the request
-                            InvitePlayerEmail.setBackgroundColor(Color.WHITE);// reset background colour on new request
                             InvitePlayerEmail.setText(value); // set the input as the incoming players email as to identify them
                             IncomingAlert();// trigger the incoming alert
                             // InvitePlayerEmail.setBackgroundColor(Color.GREEN);
@@ -210,24 +216,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void IncomingAlert() {// flashes the Invitation input to alert the user to an incoming request
-            InvitePlayerEmail.setBackgroundColor(Color.GREEN);// set background colour to green to alert to incoming request
+            InvitePlayerEmail.setBackgroundColor(Color.rgb(76,175,80));// set background colour to green to alert to incoming request
+            buAccept.setEnabled(true);// enable the accept button
+            buAccept.setBackgroundColor(Color.rgb(76,175,80));// set background colour for the alert button to green to alert to incoming request
     }
 
     public void buAccept(View view) { // handles the button click for Accept
         Log.d("Accept", InvitePlayerEmail.getText().toString()); // log the output when the Accept button is pressed
-        //send request to a user via the invitePlayerEmail input and MyEmail so the other user knows who the request is from,
-        // push will assign a random ID to the request this creates a response to the initial game request
-        myRef.child("Users").child(BeforeAt(InvitePlayerEmail.getText().toString())).child("Requests").push().setValue(MyEmail);
-        StartGame(BeforeAt(MyEmail) + ":" + BeforeAt(InvitePlayerEmail.getText().toString()));//start the game with the name of the two players
-        MySample="O";// when game accept set as O
-
+        if (InvitePlayerEmail.length() != 0 && InvitePlayerEmail.length() > 3) {// check the email is not 0 and length grater than 3
+            buAccept.setEnabled(false); // disable the button whilst playing another player
+            InvitePlayerEmail.setBackgroundColor(Color.WHITE);// reset background colour on new request
+            //send request to a user via the invitePlayerEmail input and MyEmail so the other user knows who the request is from,
+            // push will assign a random ID to the request this creates a response to the initial game request
+            myRef.child("Users").child(BeforeAt(InvitePlayerEmail.getText().toString())).child("Requests").push().setValue(MyEmail);
+            StartGame(BeforeAt(MyEmail) + ":" + BeforeAt(InvitePlayerEmail.getText().toString()));//start the game with the name of the two players
+            MySample = "O";// when game accept set as O
+        }
     }
 
 
     public void buLogin(View view) { // handles button click for Login
         Log.d("Login", MyLoginEmail.getText().toString()); // log the output when the Login button is pressed of the user email
         Log.d("Password", MyLoginPassword.getText().toString()); // log the output when the login button is pressed of the user password
-        if (MyLoginEmail != null) {
+        if (MyLoginEmail.length() != 0 && MyLoginPassword.length() !=0) {// check the user name and password length are not 0
             UserLogin(MyLoginEmail.getText().toString(), MyLoginPassword.getText().toString());
         } else { Toast.makeText(this, "Please Enter Your Email and Password!",
                 Toast.LENGTH_LONG).show();
@@ -242,18 +253,17 @@ public class MainActivity extends AppCompatActivity {
         MyLoginPassword.setEnabled(true);// re-enable the local password input
         MyLoginPassword.setText("");//set password text to blank
         buRegister.setEnabled(true);// re-enable the register button
-        buLogin.setBackgroundColor(Color.GREEN);// set button colour back to green for login button
-        buRegister.setBackgroundColor(Color.MAGENTA); // set button color back to its original
+        buLogin.setBackgroundColor(Color.rgb(76,175,80));// set button colour back to green for login button
+        buRegister.setBackgroundColor(Color.rgb(136,0,255)); // set button color back to its original
 
     }
 
     public void buRegister(View view) {// handles registering a user
         Log.d("Login", MyLoginEmail.getText().toString()); // log the output when the register button is pressed of the user email
         Log.d("Password", MyLoginPassword.getText().toString()); // log the output when the register button is pressed of the user password
-        if (MyLoginEmail != null) {
+        if (MyLoginEmail.length() != 0 && MyLoginPassword.length() !=0) {// check the user name and password length are not 0
             UserRegistration(MyLoginEmail.getText().toString(), MyLoginPassword.getText().toString());
-        } else { Toast.makeText(this, "Please Enter Your Email and Password!",
-                Toast.LENGTH_LONG).show();
+        } else { Toast.makeText(this,"Please Enter Your Registration Details",Toast.LENGTH_LONG).show();
         }
     }
     String MySample ="X";// my Game Char
@@ -377,50 +387,66 @@ public class MainActivity extends AppCompatActivity {
         int Winner=-1;
         //row 1
         if (Player1.contains(1) && Player1.contains(2)  && Player1.contains(3))  {
-            Winner=1 ;
+            Winner=1;
         }
         if (Player2.contains(1) && Player2.contains(2)  && Player2.contains(3))  {
-            Winner=2 ;
+            Winner=2;
         }
 
         //row 2
         if (Player1.contains(4) && Player1.contains(5)  && Player1.contains(6))  {
-            Winner=1 ;
+            Winner=1;
         }
         if (Player2.contains(4) && Player2.contains(5)  && Player2.contains(6))  {
-            Winner=2 ;
+            Winner=2;
         }
 
         //row 3
         if (Player1.contains(7) && Player1.contains(8)  && Player1.contains(9))  {
-            Winner=1 ;
+            Winner=1;
         }
         if (Player2.contains(7) && Player2.contains(8)  && Player2.contains(9))  {
-            Winner=2 ;
+            Winner=2;
         }
 
         //col 1
         if (Player1.contains(1) && Player1.contains(4)  && Player1.contains(7))  {
-            Winner=1 ;
+            Winner=1;
         }
         if (Player2.contains(1) && Player2.contains(4)  && Player2.contains(7))  {
-            Winner=2 ;
+            Winner=2;
         }
 
         //col 2
         if (Player1.contains(2) && Player1.contains(5)  && Player1.contains(8))  {
-            Winner=1 ;
+            Winner=1;
         }
         if (Player2.contains(2) && Player2.contains(5)  && Player2.contains(8))  {
-            Winner=2 ;
+            Winner=2;
         }
 
         //col 3
         if (Player1.contains(3) && Player1.contains(6)  && Player1.contains(9))  {
-            Winner=1 ;
+            Winner=1;
         }
         if (Player2.contains(3) && Player2.contains(6)  && Player2.contains(9))  {
-            Winner=2 ;
+            Winner=2;
+        }
+
+        //cross
+        if (Player1.contains(3) && Player1.contains(7)  && Player1.contains(5))  {
+            Winner=1;
+        }
+        if (Player2.contains(3) && Player2.contains(7)  && Player2.contains(5))  {
+            Winner=2;
+        }
+
+        //cross 2
+        if (Player1.contains(1) && Player1.contains(5)  && Player1.contains(9))  {
+            Winner=1;
+        }
+        if (Player2.contains(1) && Player2.contains(5)  && Player2.contains(9))  {
+            Winner=2;
         }
 
         if ( Winner !=-1){
@@ -428,10 +454,14 @@ public class MainActivity extends AppCompatActivity {
 
             if (Winner==1){
                 Toast.makeText(this,"Player 1 is winner",Toast.LENGTH_LONG).show();
+                Player1.clear();
+                Player2.clear();
             }
 
             if (Winner==2){
                 Toast.makeText(this,"Player 2 is winner",Toast.LENGTH_LONG).show();
+                Player1.clear();
+                Player2.clear();
             }
 
         }

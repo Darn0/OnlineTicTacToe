@@ -3,4 +3,9 @@
     <string name="invite">Invite</string>
     <string name="accept">Accept</string>
     <string name="my_email">My Email</string>
+    <string name="invite_a_user_by_email">Invite a User by Email</string>
+    <string name="login">Login</string>
+    <string name="login_password">Login Password</string>
+    <string name="login_email">Login Email</string>
+    <string name="logout">Logout</string>
 </resources>

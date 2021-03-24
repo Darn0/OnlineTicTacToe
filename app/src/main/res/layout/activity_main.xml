@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="buLogin"
-            android:text="Login"
+            android:text="@string/login"
             app:backgroundTint="#4CAF50" />
 
         <Button
@@ -29,7 +29,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="buRegister"
-            android:text="Register" />
+            android:text="Register"
+            app:backgroundTint="#8800FF" />
 
         <Button
             android:id="@+id/buLogout"
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="buLogout"
-            android:text="Logout"
+            android:text="@string/logout"
             app:backgroundTint="#E91E1E" />
     </LinearLayout>
 
@@ -53,7 +54,7 @@
             android:layout_weight="1"
             android:autofillHints=""
             android:ems="10"
-            android:hint="Login Email"
+            android:hint="@string/login_email"
             android:inputType="textEmailAddress" />
 
         <EditText
@@ -62,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Login Password"
+            android:hint="@string/login_password"
             android:inputType="textPassword" />
 
     </LinearLayout>
@@ -78,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Invite a User by Email"
+            android:hint="@string/invite_a_user_by_email"
             android:importantForAutofill="no"
             android:inputType="textEmailAddress" />
 
