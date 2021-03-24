@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "509490667380",
+    "project_id": "onlinetictactoe-b6308",
+    "storage_bucket": "onlinetictactoe-b6308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509490667380:android:25e2ca1774f17dea9ed621",
+        "android_client_info": {
+          "package_name": "com.hope.onlinetictactoe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "509490667380-2jkqj8mgacktpkspfujq977b64jtla3s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADOWGVNdIqqS8R6wL7Js5bfeg9uJWFG84"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "509490667380-2jkqj8mgacktpkspfujq977b64jtla3s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
