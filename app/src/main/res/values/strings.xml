@@ -8,4 +8,24 @@
     <string name="login_password">Login Password</string>
     <string name="login_email">Login Email</string>
     <string name="logout">Logout</string>
+    <string name="register">Register</string>
+    <string name="x_or_o">X or O</string>
+    <string name="a1">A1</string>
+    <string name="a2">A2</string>
+    <string name="a3">A3</string>
+    <string name="b1">B1</string>
+    <string name="c3">C3</string>
+    <string name="c2">C2</string>
+    <string name="c1">C1</string>
+    <string name="b3">B3</string>
+    <string name="b2">B2</string>
+    <string name="let_s_play_tic_tac_toe">Let\'s Play Tic Tac Toe</string>
+    <string name="button">Button</string>
+    <string name="play">Play</string>
+    <string name="about">About</string>
+    <string name="temp">Temp</string>
+    <string name="home">Home</string>
+    <string name="hope">Hope</string>
+    <string name="let_s_play_tic_tac_toe_online">Let\'s Play Tic Tac Toe Online</string>
+    <string name="this_project_was_created_for_a_final_year_android_assessment_at_liverpool_hope_university_and_is_a_mobile_game_designed_to_allow_two_players_to_play_an_interactive_version_of_tic_tac_toe_online_and_has_been_designed_for_android_kitkat_4_4_api_19_and_above">This project was created for a final year Android assessment at Liverpool Hope University and is a mobile game designed to allow two players to play an interactive version of Tic Tac Toe Online and has been designed for Android KitKat 4.4 (API 19 and above)</string>
 </resources>

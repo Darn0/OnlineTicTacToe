@@ -6,4 +6,45 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity_about">
 
+    <ImageView
+        android:id="@+id/imgHope"
+        android:layout_width="335dp"
+        android:layout_height="219dp"
+        android:contentDescription="@string/hope"
+        app:layout_constraintBottom_toTopOf="@+id/buHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/_020_01_17_33_liverpool_hope_university_crest" />
+
+    <Button
+        android:id="@+id/buHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="4dp"
+        android:text="@string/home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgHope" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="180dp"
+        android:text="@string/this_project_was_created_for_a_final_year_android_assessment_at_liverpool_hope_university_and_is_a_mobile_game_designed_to_allow_two_players_to_play_an_interactive_version_of_tic_tac_toe_online_and_has_been_designed_for_android_kitkat_4_4_api_19_and_above"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@+id/buHome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgHope"
+        app:layout_constraintVertical_bias="0.826" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

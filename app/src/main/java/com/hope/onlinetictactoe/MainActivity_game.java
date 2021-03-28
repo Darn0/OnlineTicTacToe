@@ -1,35 +1,39 @@
 package com.hope.onlinetictactoe;
 
-        import androidx.annotation.NonNull;
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
-        import android.annotation.SuppressLint;
-        import android.graphics.Color;
-        import android.os.Bundle;
-        import android.util.Log;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.EditText;
-        import android.widget.Toast;
+import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 // Import Firebase Analytics
-        import com.google.android.gms.tasks.OnCompleteListener;
-        import com.google.android.gms.tasks.Task;
-        import com.google.firebase.analytics.FirebaseAnalytics;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.analytics.FirebaseAnalytics;
 // Import Firebase Auth
-        import com.google.firebase.auth.AuthResult;
-        import com.google.firebase.auth.FirebaseAuth;
-        import com.google.firebase.auth.FirebaseUser;
-        import com.google.firebase.database.DataSnapshot;
-        import com.google.firebase.database.DatabaseError;
-        import com.google.firebase.database.DatabaseReference;
-        import com.google.firebase.database.FirebaseDatabase;
-        import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
-        import java.util.ArrayList;
-        import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity_game extends AppCompatActivity {
 
     EditText InvitePlayerEmail; // gets the opponent invite email from the UI
     EditText MyLoginEmail; // gets the local users email from the UI
@@ -59,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_game);
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -296,6 +300,8 @@ public class MainActivity extends AppCompatActivity {
         buRegister.setEnabled(true);// re-enable the register button
         buLogin.setBackgroundColor(Color.rgb(76,175,80));// set button colour back to green for login button
         buRegister.setBackgroundColor(Color.rgb(136,0,255)); // set button color back to its original
+        Button LogoutButton = findViewById(R.id.buLogout);//assign button to buHome
+        startActivity(new Intent(MainActivity_game.this, MainActivity.class));// when home button pressed return to main activity
     }
 
     public void buRegister(View view) {// handles registering a user
@@ -451,10 +457,8 @@ public class MainActivity extends AppCompatActivity {
 
         if ( Winner !=-1){
             // We have winner
-            int P1Wins = 0;
-            int P2Wins = 0;
             if (Winner == 1) {
-                Toast.makeText(this,"Player 2 is winner\nClick the tiles to play again\nPlayer1 "+ P1Wins +":"+ P2Wins +" Player2",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Player 2 is winner\nClick the tiles to play again",Toast.LENGTH_SHORT).show();
                 Player1.clear();
                 Player2.clear();
 
@@ -489,11 +493,10 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.bu7).setEnabled(true);
                 findViewById(R.id.bu8).setEnabled(true);
                 findViewById(R.id.bu9).setEnabled(true);
-                P1Wins++;
             }
 
             if (Winner==2){
-                Toast.makeText(this,"Player 2 is winner\nClick the tiles to play again\nPlayer1 "+ P1Wins +":"+ P2Wins +" Player2",Toast.LENGTH_SHORT).show();
+                Toast.makeText(this,"Player 2 is winner\nClick the tiles to play again",Toast.LENGTH_SHORT).show();
                 Player1.clear();
                 Player2.clear();
 
@@ -528,7 +531,6 @@ public class MainActivity extends AppCompatActivity {
                 findViewById(R.id.bu7).setEnabled(true);
                 findViewById(R.id.bu8).setEnabled(true);
                 findViewById(R.id.bu9).setEnabled(true);
-                P2Wins++;
             }
 
         }
