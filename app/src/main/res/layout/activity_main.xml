@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -9,205 +10,279 @@
     android:orientation="vertical"
     tools:context="com.hope.onlinetictactoe.MainActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+
+    <Button
+        android:id="@+id/buLogin"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="buLogin"
+        android:text="@string/login"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintEnd_toStartOf="@+id/buRegister"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/buLogin"
-            android:layout_width="99dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="buLogin"
-            android:text="@string/login"
-            app:backgroundTint="#4CAF50" />
-
-        <Button
-            android:id="@+id/buRegister"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="buRegister"
-            android:text="Register"
-            app:backgroundTint="#8800FF" />
-
-        <Button
-            android:id="@+id/buLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="buLogout"
-            android:text="@string/logout"
-            app:backgroundTint="#E91E1E" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/buRegister"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:onClick="buRegister"
+        android:text="@string/register"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#8800FF"
+        app:layout_constraintEnd_toStartOf="@+id/buLogout"
+        app:layout_constraintStart_toEndOf="@+id/buLogin"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/MyLoginEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:autofillHints=""
-            android:ems="10"
-            android:hint="@string/login_email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/MyLoginPassword"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/login_password"
-            android:inputType="textPassword" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/buLogout"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:onClick="buLogout"
+        android:text="@string/logout"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#E91E1E"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buRegister"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/InvitePlayerEmail"
-            android:layout_width="222dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/invite_a_user_by_email"
-            android:importantForAutofill="no"
-            android:inputType="textEmailAddress" />
+    <EditText
+        android:id="@+id/MyLoginEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/login_email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toStartOf="@+id/MyLoginPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buLogin" />
 
-        <Button
-            android:id="@+id/buInvite"
-            android:layout_width="114dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="buInvite"
-            android:text="@string/invite"
-            app:backgroundTint="#3F51B5" />
+    <EditText
+        android:id="@+id/MyLoginPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:ems="10"
+        android:hint="@string/login_password"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/bu3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/MyLoginEmail"
+        app:layout_constraintTop_toBottomOf="@+id/buLogout" />
 
-        <Button
-            android:id="@+id/buAccept"
-            android:layout_width="119dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="buAccept"
-            android:text="@string/accept"
-            app:backgroundTint="#4CAF50" />
+    <Button
+        android:id="@+id/bu1"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bu4"
+        app:layout_constraintEnd_toStartOf="@+id/bu2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyLoginEmail" />
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/bu2"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bu5"
+        app:layout_constraintEnd_toStartOf="@+id/bu3"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toEndOf="@+id/bu1"
+        app:layout_constraintTop_toBottomOf="@+id/MyLoginEmail" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="375dp">
+    <Button
+        android:id="@+id/bu3"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bu6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bu2"
+        app:layout_constraintTop_toBottomOf="@+id/MyLoginPassword" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="216dp"
-            android:layout_marginTop="10dp"
-            android:gravity="center">
+    <Button
+        android:id="@+id/bu4"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bu7"
+        app:layout_constraintEnd_toStartOf="@+id/bu5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bu1" />
 
-            <Button
-                android:id="@+id/bu1"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:layout_marginLeft="3pt"
-                android:layout_marginRight="3pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
+    <Button
+        android:id="@+id/bu5"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bu8"
+        app:layout_constraintEnd_toStartOf="@+id/bu6"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toEndOf="@+id/bu4"
+        app:layout_constraintTop_toBottomOf="@+id/bu2" />
 
-            <Button
-                android:id="@+id/bu2"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:layout_marginRight="3pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
+    <Button
+        android:id="@+id/bu6"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/bu9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bu5"
+        app:layout_constraintTop_toBottomOf="@+id/bu3" />
 
-            <Button
-                android:id="@+id/bu3"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
-        </TableRow>
+    <Button
+        android:id="@+id/bu7"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="2dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/buInvite"
+        app:layout_constraintEnd_toStartOf="@+id/bu8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bu4" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+    <Button
+        android:id="@+id/bu8"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/buInvite"
+        app:layout_constraintEnd_toStartOf="@+id/bu9"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toEndOf="@+id/bu7"
+        app:layout_constraintTop_toBottomOf="@+id/bu5" />
 
-            <Button
-                android:id="@+id/bu4"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:layout_marginLeft="3pt"
-                android:layout_marginRight="3pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
+    <Button
+        android:id="@+id/bu9"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="BuClick"
+        app:backgroundTint="@color/black"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/buAccept"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bu8"
+        app:layout_constraintTop_toBottomOf="@+id/bu6" />
 
-            <Button
-                android:id="@+id/bu5"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:layout_marginRight="3pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
+    <EditText
+        android:id="@+id/InvitePlayerEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:ems="10"
+        android:hint="@string/invite_a_user_by_email"
+        android:importantForAutofill="no"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buInvite"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bu7"
+        app:layout_constraintVertical_bias="1.0" />
 
-            <Button
-                android:id="@+id/bu6"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
-        </TableRow>
+    <Button
+        android:id="@+id/buInvite"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="buInvite"
+        android:text="@string/invite"
+        app:backgroundTint="#3F51B5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buAccept"
+        app:layout_constraintStart_toEndOf="@+id/InvitePlayerEmail"
+        app:layout_constraintTop_toBottomOf="@+id/bu8"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+    <Button
+        android:id="@+id/buAccept"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="1dp"
+        android:onClick="buAccept"
+        android:text="@string/accept"
+        app:backgroundTint="#4CAF50"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/buInvite"
+        app:layout_constraintTop_toBottomOf="@+id/bu9"
+        app:layout_constraintVertical_bias="1.0" />
 
-            <Button
-                android:id="@+id/bu7"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:layout_marginLeft="3pt"
-                android:layout_marginRight="3pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
 
-            <Button
-                android:id="@+id/bu8"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:layout_marginRight="3pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black" />
-
-            <Button
-                android:id="@+id/bu9"
-                android:layout_width="50pt"
-                android:layout_height="50pt"
-                android:onClick="BuClick"
-                android:text=" "
-                app:backgroundTint="@color/black"
-                app:iconTint="#FFFFFF" />
-
-        </TableRow>
-    </TableLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
