@@ -100,14 +100,14 @@ public class MainActivity_game extends AppCompatActivity {
             }
         };
 
-        InvitePlayerEmail = findViewById(R.id.InvitePlayerEmail); // initilize the the opponent email from the UI
-        MyLoginEmail = findViewById(R.id.MyLoginEmail); // initilize the local users email from the UI
-        MyLoginPassword = findViewById(R.id.MyLoginPassword); // initilize the local user password from the UI
-        buLogin = findViewById(R.id.buLogin); // initilize the Login button form the UI
-        buInvite = findViewById(R.id.buInvite); // initilize the Invite button form the UI
-        buAccept = findViewById(R.id.buAccept); // initilize the Accept button form the UI
-        buRegister = findViewById(R.id.buRegister); // initilize the Register button from the UI
-        buLogout = findViewById(R.id.buLogout); // initilize the Logout button from the UI
+        InvitePlayerEmail = findViewById(R.id.InvitePlayerEmail); // initialize the the opponent email from the UI
+        MyLoginEmail = findViewById(R.id.MyLoginEmail); // initialize the local users email from the UI
+        MyLoginPassword = findViewById(R.id.MyLoginPassword); // initialize the local user password from the UI
+        buLogin = findViewById(R.id.buLogin); // initialize the Login button form the UI
+        buInvite = findViewById(R.id.buInvite); // initialize the Invite button form the UI
+        buAccept = findViewById(R.id.buAccept); // initialize the Accept button form the UI
+        buRegister = findViewById(R.id.buRegister); // initialize the Register button from the UI
+        buLogout = findViewById(R.id.buLogout); // initialize the Logout button from the UI
 
 
     }
@@ -201,7 +201,7 @@ public class MainActivity_game extends AppCompatActivity {
             myRef.child("Users").child(BeforeAt(InvitePlayerEmail.getText().toString())).child("Requests").push().setValue(MyEmail);
             StartGame(BeforeAt(InvitePlayerEmail.getText().toString()) + ":" + BeforeAt(MyEmail));
             MySample = "X";//when invite set player as X
-            ReplayGame = "Invite"; // if the game is replayed between two players make sure to play how the game was originaly set up
+            ReplayGame = "Invite"; // if the game is replayed between two players make sure to play how the game was originally set up
         } else {
             Toast.makeText(this, "Please enter an Invite email address", Toast.LENGTH_LONG).show();
         }
@@ -223,7 +223,7 @@ public class MainActivity_game extends AppCompatActivity {
                             InvitePlayerEmail.setText(value); // set the input as the incoming players email as to identify them
                             IncomingAlert();// trigger the incoming alert
                             // InvitePlayerEmail.setBackgroundColor(Color.GREEN);
-                            myRef.child("Users").child(BeforeAt(MyEmail)).child("Requests").setValue(uid);// send the local users email and thier unique ID back to firebase
+                            myRef.child("Users").child(BeforeAt(MyEmail)).child("Requests").setValue(uid);// send the local users email and their unique ID back to firebase
                             break;//break request
                         }
                     }
@@ -255,7 +255,7 @@ public class MainActivity_game extends AppCompatActivity {
             myRef.child("Users").child(BeforeAt(InvitePlayerEmail.getText().toString())).child("Requests").push().setValue(MyEmail);
             StartGame(BeforeAt(MyEmail) + ":" + BeforeAt(InvitePlayerEmail.getText().toString()));//start the game with the name of the two players
             MySample = "O";// when game accept set as O
-            ReplayGame = "Accept"; // if the game is replayed between two players make sure to play how the game was originaly set up
+            ReplayGame = "Accept"; // if the game is replayed between two players make sure to play how the game was originally set up
             //Reset the game board
             findViewById(R.id.bu1).setBackgroundColor(Color.BLACK);
             findViewById(R.id.bu2).setBackgroundColor(Color.BLACK);
@@ -366,7 +366,7 @@ public class MainActivity_game extends AppCompatActivity {
 
         Button buSelected = (Button) view;
         int CellID = 0;
-        int id = (buSelected.getId());// use a switch to select the corrosponding cellID to the button pressed
+        int id = (buSelected.getId());// use a switch to select the corresponding cellID to the button pressed
         if (id == R.id.bu1) {
             CellID = 1;
         } else if (id == R.id.bu2) {
